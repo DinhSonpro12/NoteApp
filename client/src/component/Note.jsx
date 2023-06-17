@@ -86,6 +86,7 @@ export default function Note() {
   const debouncedMemorized = useMemo(() => {
     return debounce((rawHTML, note, pathname) => {
       if (rawHTML === note.content) return;
+      if (note.content == false) return;
 
       submit(
         { noteID: note._id, content: rawHTML },

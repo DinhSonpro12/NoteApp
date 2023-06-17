@@ -130,7 +130,7 @@ export default function NoteList() {
         </div>
       </div>
       <div className="bg-white h-full pl-2 overflow-x-hidden overflow-scroll">
-        {/* {<Outlet />} */}
+        {<Outlet />}
       </div>
     </div>
   );
