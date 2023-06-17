@@ -24,29 +24,39 @@ export default function NoteList() {
   const { activeFolder, setActiveFolder } = useContext(Authcontext);
 
   useEffect(() => {
-    if (NoteID) {
-      if (
-        NoteLists.find((x) => {
-          return x._id == NoteID;
-        })
-      ) {
-        if (NoteLists[0]) setActiveId(NoteID);
-      } else nav("/error url notelist");
-    } else if (NoteLists[0]) {
-      console.log("run");
-      if (NoteLists[0]._id == avtiveId) nav(`notelist/${avtiveId}`);
-      else setActiveId(NoteLists[0]._id);
+    if (NoteLists[0]) {
+      // console.log("cos vo");
+      if (NoteID) {
+        if (
+          NoteLists.find((x) => {
+            return x._id == NoteID;
+          })
+        ) {
+          if (NoteLists[0]) {
+            console.log("1111");
+
+            setActiveId(NoteID);
+          }
+        } else nav("/error url notelist");
+      } else if (NoteLists[0]._id == avtiveId) {
+        console.log("voo dday");
+        nav(`notelist/${avtiveId}`);
+      } else {
+        console.log("222");
+
+        setActiveId(NoteLists[0]._id);
+      }
     }
   }, [NoteLists]);
 
   useEffect(() => {
     if (avtiveId) {
+      console.log("co nav");
       nav(`notelist/${avtiveId}`);
     }
   }, [avtiveId]);
 
   const handleAddNewNote = () => {
-    setActiveFolder(FolderID);
     submit(
       {
         content: "",
@@ -54,16 +64,18 @@ export default function NoteList() {
       },
       { method: "post", action: `/folder/${FolderID}` }
     );
+    setActiveFolder(FolderID);
   };
 
   function handleRemove(noteId) {
-    setActiveFolder(FolderID);
     submit(
       {
         noteId: noteId,
       },
       { method: "delete", action: `/folder/${FolderID}` }
     );
+
+    setActiveFolder(FolderID);
   }
 
   return (
@@ -75,7 +87,7 @@ export default function NoteList() {
         <button
           onClick={() => {
             handleAddNewNote();
-            setActiveId(0);
+            // setActiveId(null);
           }}
         >
           <NoteAddIcon />
@@ -106,7 +118,8 @@ export default function NoteList() {
                   onClick={(e) => {
                     e.stopPropagation();
                     handleRemove(NoteList._id);
-                    setActiveId(null);
+                    // setActiveId(null);
+                    console.log("333");
                   }}
                 >
                   <DeleteIcon />
@@ -117,7 +130,7 @@ export default function NoteList() {
         </div>
       </div>
       <div className="bg-white h-full pl-2 overflow-x-hidden overflow-scroll">
-        {<Outlet />}
+        {/* {<Outlet />} */}
       </div>
     </div>
   );

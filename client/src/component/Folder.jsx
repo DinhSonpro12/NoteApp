@@ -89,7 +89,7 @@ export default function Folder({ Folders }) {
             setActiveAdd(false);
           }}
           setActiveId={() => {
-            setActiveFolder(activeId);
+            // setActiveFolder(activeId);
             setActiveId(0);
           }}
         />
@@ -132,7 +132,7 @@ export default function Folder({ Folders }) {
                       if (e.key === "Enter") {
                         ReNameFolder(newName, folder._id);
                         setactiveRename(false);
-                        setActiveFolder(activeId);
+                        // setActiveFolder(activeId);
                         setActiveId(0);
                       } else if (e.key === "Escape") {
                         setactiveRename(false);
