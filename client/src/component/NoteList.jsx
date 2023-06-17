@@ -15,6 +15,7 @@ export default function NoteList() {
   const nav = useNavigate();
   const submit = useSubmit();
   const NoteLists = useLoaderData();
+  console.log("NoteLists", NoteLists);
 
   const FolderID = useParams().FolderId || null;
   const NoteID = useParams().NoteListID || null;
@@ -29,9 +30,10 @@ export default function NoteList() {
           return x._id == NoteID;
         })
       ) {
-        setActiveId(NoteID);
+        if (NoteLists[0]) setActiveId(NoteID);
       } else nav("/error url notelist");
     } else if (NoteLists[0]) {
+      console.log("run");
       if (NoteLists[0]._id == avtiveId) nav(`notelist/${avtiveId}`);
       else setActiveId(NoteLists[0]._id);
     }
@@ -65,7 +67,7 @@ export default function NoteList() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex h-[536px] ">
       <div className=" flex h-[520px] justify-start items-center flex-col bg-[#ccc] rounded-lg my-2 pt-2 ">
         <h1>NoteList</h1>
 
@@ -93,7 +95,10 @@ export default function NoteList() {
                   setActiveId(NoteList._id);
                 }}
               >
-                <p className="truncate">{"No content"}</p>
+                <p className="truncate">
+                  {NoteList.content.split("</p>")[0].split("<p>")[1] ||
+                    "No content"}
+                </p>
 
                 {/* delete icon */}
                 <div
@@ -101,7 +106,7 @@ export default function NoteList() {
                   onClick={(e) => {
                     e.stopPropagation();
                     handleRemove(NoteList._id);
-                    setActiveId(0);
+                    setActiveId(null);
                   }}
                 >
                   <DeleteIcon />
@@ -111,7 +116,9 @@ export default function NoteList() {
           })}
         </div>
       </div>
-      <div className="bg-white m-2">{<Outlet />}</div>
+      <div className="bg-white h-full pl-2 overflow-x-hidden overflow-scroll">
+        {<Outlet />}
+      </div>
     </div>
   );
 }

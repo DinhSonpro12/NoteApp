@@ -36,11 +36,43 @@ export default function Note() {
       blocksFromHTML.entityMap
     );
 
-    console.log("ne: ", state);
-    setEditorState(
-      EditorState.moveFocusToEnd(EditorState.createWithContent(state))
-    );
-    // }, [note]);
+    // TEST
+    // const convertRawHTMLToDraftData = (rawHTML) => {
+    //   const parser = new DOMParser();
+    //   const parsedHTML = parser.parseFromString(rawHTML, "text/html");
+    //   // console.log("parsedHTML", parsedHTML);
+
+    //   const blocks = Array.from(parsedHTML.body.childNodes).map((node) => {
+    //     let text = node.textContent;
+
+    //     // Xử lý đặc biệt cho kí tự &nbsp;
+    //     text = text.replace(/\&nbsp/g, " ");
+
+    //     return {
+    //       type: "unstyled",
+    //       text,
+    //       entityRanges: [],
+    //       inlineStyleRanges: [],
+    //     };
+    //   });
+
+    //   return {
+    //     blocks,
+    //     entityMap: {},
+    //   };
+    // };
+
+    // // Chuyển đổi raw HTML thành dữ liệu Draft.js
+    // const draftData = convertRawHTMLToDraftData(note.content);
+
+    // const x = EditorState.moveFocusToEnd(
+    //   EditorState.createWithContent(convertFromRaw(draftData))
+    // );
+    // TEST
+
+    // console.log("ne: ", state);
+    const x = EditorState.moveFocusToEnd(EditorState.createWithContent(state));
+    setEditorState(x);
   }, [NoteID]);
 
   useEffect(() => {
@@ -67,6 +99,8 @@ export default function Note() {
 
   const handleOnChange = (newEditorState) => {
     setEditorState(newEditorState);
+    console.log(draftToHtml(convertToRaw(newEditorState.getCurrentContent())));
+
     setRawHTML(draftToHtml(convertToRaw(newEditorState.getCurrentContent())));
   };
 
