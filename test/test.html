@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .editable {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            cursor: pointer;
+        }
+
+        /* .editable:focus {
+            display: none;
+        } */
+
+        /* .editable:focus+.edit-input {
+            display: inline-block;
+        } */
+
+        /* .edit-input {
+            display: none;
+        } */
+
+        .contain {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="editable">oldname</div> -->
+
+    <div class="contain">
+        <div>1</div>
+        <div>2</div>
+        <!-- <div>3</div> -->
+
+    </div>
+    <script>
+        const editable = document.querySelector('.editable');
+        editable.addEventListener("click", () => {
+            // editable.style.display = 'none';
+            // const input = document.createElement('input');
+            // input.className = 'edit-input';
+            // input.value = editable.textContent;
+            // editable.insertAdjacentElement('afterend', input);
+            // input.focus();
+            // input.addEventListener('blur', () => {
+            //     editable.style.display = 'inline-block';
+            //     editable.textContent = input.value;
+            //     input.remove();
+            // });
+
+            console.log("fethc nè")
+            const url = "http://localhost:8008/api/folder/create";
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: "html",
+                    authorId: "xxx",
+                }),
+
+            });
+
+
+
+        });
+
+
+        function funcx() {
+
+        }
+
+
+
+
+
+        // document.querySelector(".editable").addEventListener(onclick, funcx)
+
+
+
+    </script>
+
+</body>
+
+</html>

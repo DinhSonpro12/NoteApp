@@ -1,0 +1,38 @@
+
+
+
+
+
+# POST http://localhost:3003/api/folder/create
+# Content-Type: application/json
+
+# {
+# "name": "99",
+# "authorId": "ko co"
+# }
+
+# DELETE http://localhost:3003/api/folder/delete/64872e5f5bcb6361e4d0262d
+# Content-Type: application/json
+
+
+# PATCH   http://localhost:3003/api/folder/rename
+# Content-Type: application/json
+
+# {
+#   "folderId": "64819cf9280bea2ca8c9e43a",
+#   "newName":"newName"
+# }
+
+
+PATCH   http://localhost:8008/api/note/update
+Content-Type: application/json
+
+{
+  "noteID": "648c41898e92ea40747efde7",
+  "content":"<p>sdasdasdasdasdasd</p>
+<p>sadasdasd</p>
+<p>ádasdasd</p>
+<p>sdfsdfsdfsdfsdf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>"
+}
+
+
