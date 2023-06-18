@@ -15,7 +15,7 @@ export default function NoteList() {
   const nav = useNavigate();
   const submit = useSubmit();
   const NoteLists = useLoaderData();
-  console.log("NoteLists", NoteLists);
+  // console.log("NoteLists", NoteLists);
 
   const FolderID = useParams().FolderId || null;
   const NoteID = useParams().NoteListID || null;
@@ -25,7 +25,6 @@ export default function NoteList() {
 
   useEffect(() => {
     if (NoteLists[0]) {
-      // console.log("cos vo");
       if (NoteID) {
         if (
           NoteLists.find((x) => {
@@ -33,27 +32,25 @@ export default function NoteList() {
           })
         ) {
           if (NoteLists[0]) {
-            console.log("1111");
-
             setActiveId(NoteID);
           }
         } else nav("/error url notelist");
       } else if (NoteLists[0]._id == avtiveId) {
-        console.log("voo dday");
         nav(`notelist/${avtiveId}`);
       } else {
-        console.log("222");
-
         setActiveId(NoteLists[0]._id);
       }
+    } else {
+      console.log("active", avtiveId);
+      setActiveId(0);
+      // nav(`/Folder/${FolderID}`);
     }
   }, [NoteLists]);
 
   useEffect(() => {
     if (avtiveId) {
-      console.log("co nav");
       nav(`notelist/${avtiveId}`);
-    }
+    } else nav(`/Folder/${FolderID}`);
   }, [avtiveId]);
 
   const handleAddNewNote = () => {
@@ -79,7 +76,7 @@ export default function NoteList() {
   }
 
   return (
-    <div className="flex h-[536px] ">
+    <div className="flex h-[536px] overflow-x-hidden">
       <div className=" flex h-[520px] justify-start items-center flex-col bg-[#ccc] rounded-lg my-2 pt-2 ">
         <h1>NoteList</h1>
 

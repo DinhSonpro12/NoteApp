@@ -39,9 +39,9 @@ export const addNewNote = async ({ params, request }) => {
     const url = `http://localhost:8008/api/note/${formDataObj.noteId}`;
     let a = await fetch(url, {
       method: "DELETE",
-    }).then((res) => {
-      console.log(res);
     });
+    // a = await a.json();
+    // console.log(a);
     return null;
   }
 
