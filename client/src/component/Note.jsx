@@ -7,6 +7,8 @@ import {
   convertFromHTML,
 } from "draft-js";
 
+import { Modifier } from "draft-js";
+
 import * as draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
 import {
@@ -19,6 +21,8 @@ import {
 import { debounce } from "@mui/material";
 import { getAuth } from "firebase/auth";
 import { Navigate } from "react-router-dom";
+
+import { stateFromHTML } from "draft-js-import-html";
 
 export default function Note() {
   const submit = useSubmit();
@@ -36,53 +40,24 @@ export default function Note() {
     return <Navigate to={"/login"} />;
   }
 
-  console.log("cc");
   useEffect(() => {
+    // Solution 1
     // const blocksFromHTML = convertFromHTML(note.content);
     // const state = ContentState.createFromBlockArray(
     //   blocksFromHTML.contentBlocks,
     //   blocksFromHTML.entityMap
     // );
     // const x = EditorState.moveFocusToEnd(EditorState.createWithContent(state));
+    // setEditorState(x);
+    // End Solution 1
 
-    // 11111111111111111111
-    const lines = note.content.split("<p>").map((line) =>
-      line
-        .replace("</p>", "")
-        .replace("\n", "")
-        .replace(/&nbsp;/g, " ")
-        .replace(";", "")
-    );
-
-    console.log("a", note.content);
-
-    lines.shift();
-    console.log("b", lines);
-
-    const blockArray = lines.map((line, index) => ({
-      key: String(index),
-      text: line,
-      type: "unstyled",
-    }));
-
-    console.log("c", blockArray);
-
-    const rawContentState = {
-      blocks: blockArray,
-      entityMap: {},
-    };
-    console.log("d", rawContentState);
-
-    const contentState = convertFromRaw(rawContentState);
-    console.log("e", contentState);
-
-    const x = EditorState.moveFocusToEnd(
+    // Solution 2
+    const contentState = stateFromHTML(note.content);
+    const editorState = EditorState.moveFocusToEnd(
       EditorState.createWithContent(contentState)
     );
-
-    // is mind
-
-    setEditorState(x);
+    setEditorState(editorState);
+    //End Solution 2
   }, [NoteID]);
 
   useEffect(() => {
@@ -96,10 +71,6 @@ export default function Note() {
   const debouncedMemorized = useMemo(() => {
     return debounce((rawHTML, note, pathname) => {
       if (rawHTML === note.content) return;
-      // if (NoteID == false) return;
-      // console.log("NoteID", NoteID);
-      // console.log("note", note);
-
       submit(
         { noteID: note._id, content: rawHTML },
         {
@@ -111,11 +82,10 @@ export default function Note() {
   }, []);
 
   const handleOnChange = (newEditorState) => {
-    const x =
-      editorState.getCurrentContent() != newEditorState.getCurrentContent();
-    // console.log(x);
-    if (x) {
-      setEditorState(newEditorState);
+    const isSetRawHTML =
+      editorState.getCurrentContent() !== newEditorState.getCurrentContent();
+    setEditorState(newEditorState);
+    if (isSetRawHTML) {
       setRawHTML(draftToHtml(convertToRaw(newEditorState.getCurrentContent())));
     }
   };
@@ -126,21 +96,6 @@ export default function Note() {
       onEditorStateChange={handleOnChange}
       preserveWhitespace={true}
       placeholder="Write something!"
-      toolbar={{
-        options: [
-          "inline",
-          "blockType",
-          "list",
-          "textAlign",
-          "link",
-          "emoji",
-          "remove",
-          "history",
-        ],
-        inline: {
-          options: ["bold", "italic"],
-        },
-      }}
     />
   );
 }

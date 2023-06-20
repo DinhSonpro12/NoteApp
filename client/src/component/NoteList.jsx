@@ -10,6 +10,7 @@ import {
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Authcontext } from "../context/AuthProvider";
+import moment from "moment";
 
 export default function NoteList() {
   const nav = useNavigate();
@@ -21,6 +22,8 @@ export default function NoteList() {
 
   const [avtiveId, setActiveId] = useState();
   const { activeFolder, setActiveFolder } = useContext(Authcontext);
+
+  console.log("ne:", NoteLists[0].content.substring(0, 30));
 
   useEffect(() => {
     if (NoteLists[0]) {
@@ -90,28 +93,31 @@ export default function NoteList() {
         </button>
 
         {/* list NoteList */}
-        <div className="overflow-hidden hover:overflow-y-auto w-[200px] mt-2">
+        <div className="overflow-hidden hover:overflow-y-auto w-[222px] mt-2">
           {NoteLists.map((NoteList, id) => {
             return (
               <div
                 key={id}
                 // to={`notelist/${NoteList._id}`}
-                className={`rounded-xl h-[70px] w-[168px] m-4 p-5 mt-0 hover:cursor-pointer flex items-center justify-center relative  ${
+                className={`rounded-xl  w-[190px] h-[82px] m-4 p-5 mt-0 hover:cursor-pointer flex flex-col items-center justify-center relative  ${
                   NoteList._id === avtiveId ? `bg-orange-200` : `bg-white`
                 }`}
                 onClick={() => {
                   setActiveId(NoteList._id);
                 }}
               >
-                <p className="truncate">
-                  {NoteList.content
-                    ? NoteList.content
-                        .split("</p>")[0]
-                        .split("<p>")[1]
-                        .replace(/&nbsp;/g, " ")
-                    : "No content"}
-
-                  {/* {console.log("hehe", NoteList.content.split("</p>"))} */}
+                {NoteList.content == "<p></p>" ? (
+                  <div
+                    className="truncate w-full text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: `${NoteList.content.substring(0, 30)}`,
+                    }}
+                  ></div>
+                ) : (
+                  "No content"
+                )}
+                <p className="text-[11px] font-light text-[#000] op ">
+                  {moment(NoteList.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                 </p>
 
                 {/* delete icon */}
