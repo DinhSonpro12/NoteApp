@@ -31,7 +31,7 @@ export default createBrowserRouter([
           {
             element: <Home />,
             path: "/",
-            loader: FoldersLoader,
+            loader: FoldersLoader || [],
             action: addNewFolder,
             children: [
               {

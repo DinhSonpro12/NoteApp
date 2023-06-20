@@ -15,7 +15,6 @@ export default function NoteList() {
   const nav = useNavigate();
   const submit = useSubmit();
   const NoteLists = useLoaderData();
-  // console.log("NoteLists", NoteLists);
 
   const FolderID = useParams().FolderId || null;
   const NoteID = useParams().NoteListID || null;
@@ -105,8 +104,14 @@ export default function NoteList() {
                 }}
               >
                 <p className="truncate">
-                  {NoteList.content.split("</p>")[0].split("<p>")[1] ||
-                    "No content"}
+                  {NoteList.content
+                    ? NoteList.content
+                        .split("</p>")[0]
+                        .split("<p>")[1]
+                        .replace(/&nbsp;/g, " ")
+                    : "No content"}
+
+                  {/* {console.log("hehe", NoteList.content.split("</p>"))} */}
                 </p>
 
                 {/* delete icon */}

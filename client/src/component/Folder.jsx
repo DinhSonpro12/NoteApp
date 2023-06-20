@@ -10,9 +10,9 @@ import { Authcontext } from "../context/AuthProvider";
 export default function Folder({ Folders }) {
   // const path = location.pathname.substring(1);
   const FolderId = useParams().FolderId || null;
+  // add
   const { activeFolder, setActiveFolder } = useContext(Authcontext);
 
-  // const location = useLocation();
   const submit = useSubmit();
   const [activeId, setActiveId] = useState(FolderId);
   const [activeAdd, setActiveAdd] = useState(0);

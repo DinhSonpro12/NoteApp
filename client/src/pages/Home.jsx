@@ -1,12 +1,24 @@
-import React, { useContext } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Outlet, useLoaderData, Navigate } from "react-router-dom";
 import { Authcontext } from "../context/AuthProvider";
 import BoxUser from "../component/BoxUser";
 import Folder from "../component/Folder";
+import { getAuth } from "firebase/auth";
 
 export default function Home() {
-  const { user } = useContext(Authcontext);
+  const { user, setMust } = useContext(Authcontext);
   const dataFolder = useLoaderData();
+
+  if (dataFolder.message == "Unauthorized") {
+    console.log("xxxx", dataFolder);
+    console.log("trước", localStorage.getItem("accessToken"));
+
+    getAuth().signOut();
+    console.log("sau", localStorage.getItem("accessToken"));
+
+    setMust(2);
+    return <Navigate to={"/login"} />;
+  }
 
   return (
     <div className="flex flex-col w-full bg-[#202124] h-screen ">

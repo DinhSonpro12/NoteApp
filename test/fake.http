@@ -3,13 +3,17 @@
 
 
 
-# POST http://localhost:3003/api/folder/create
-# Content-Type: application/json
+POST http://localhost:8008/api/folder/create
+Content-Type: application/json
+Authorization:"accesstoken"
+ 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjY3YmFiYWFiYTEwNWFkZDZiM2ZiYjlmZjNmZjVmZTNkY2E0Y2VkYTEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU8ahbiDEkGluaCBUcuG7jW5nIFTDuW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBY0hUdGZaUDluakJZZkFmUjZuS3Axc3V3bG5lelZ2dWlMNTFKamJmT0xZPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL25vdGVhcHAtZDc1ZmYiLCJhdWQiOiJub3RlYXBwLWQ3NWZmIiwiYXV0aF90aW1lIjoxNjg2NDk3OTA2LCJ1c2VyX2lkIjoiajlaakxHeFpISGFGMjJtV2lBbjVPZUM1cDVuMiIsInN1YiI6Imo5WmpMR3haSEhhRjIybVdpQW41T2VDNXA1bjIiLCJpYXQiOjE2ODcxMDY0NzUsImV4cCI6MTY4NzExMDA3NSwiZW1haWwiOiIxOTUyMjEzMkBnbS51aXQuZWR1LnZuIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMTgzNjYyMjMwNjEwMzYxMDIzNDkiXSwiZW1haWwiOlsiMTk1MjIxMzJAZ20udWl0LmVkdS52biJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.Wd_AsO-ofIf3j_DFygEZdEWOxdnDtXO2DWqRA3S-dwgeozFUgy9DpeLEB4OeryO2ObYcKuFhC2wkw0I4mPD4faCXDOh2nXlfhX4FWOaOExIhIVHFWLKwYMthTPHVP1w9NueJ7rKVC-VFsYawAJluBcVbEaGgH6MRoMjdYxWQfM1MumpIG-YJrwB-hSPT09-gdeWZiXm8Bt6x61ZwSrHMys9lzo489CeBTOakm0TE3DzweLwbVIIvLH1I7O4oJZL-C5vyPuJn2rD71I7dotBT_qQ0eo_1zQra8cdAidIA3f72MN_Oa7l95wcUqaKtcuIzrI9Ms_utXPi8SgH8rUDMgQ'
 
-# {
-# "name": "99",
-# "authorId": "ko co"
-# }
+ eyJhbGciOiJSUzI1NiIsImtpZCI6IjY3YmFiYWFiYTEwNWFkZDZiM2ZiYjlmZjNmZjVmZTNkY2E0Y2VkYTEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiU8ahbiDEkGluaCBUcuG7jW5nIFTDuW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBY0hUdGZaUDluakJZZkFmUjZuS3Axc3V3bG5lelZ2dWlMNTFKamJmT0xZPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL25vdGVhcHAtZDc1ZmYiLCJhdWQiOiJub3RlYXBwLWQ3NWZmIiwiYXV0aF90aW1lIjoxNjg2NDk3OTA2LCJ1c2VyX2lkIjoiajlaakxHeFpISGFGMjJtV2lBbjVPZUM1cDVuMiIsInN1YiI6Imo5WmpMR3haSEhhRjIybVdpQW41T2VDNXA1bjIiLCJpYXQiOjE2ODcxMDY0NzUsImV4cCI6MTY4NzExMDA3NSwiZW1haWwiOiIxOTUyMjEzMkBnbS51aXQuZWR1LnZuIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMTgzNjYyMjMwNjEwMzYxMDIzNDkiXSwiZW1haWwiOlsiMTk1MjIxMzJAZ20udWl0LmVkdS52biJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.Wd_AsO-ofIf3j_DFygEZdEWOxdnDtXO2DWqRA3S-dwgeozFUgy9DpeLEB4OeryO2ObYcKuFhC2wkw0I4mPD4faCXDOh2nXlfhX4FWOaOExIhIVHFWLKwYMthTPHVP1w9NueJ7rKVC-VFsYawAJluBcVbEaGgH6MRoMjdYxWQfM1MumpIG-YJrwB-hSPT09-gdeWZiXm8Bt6x61ZwSrHMys9lzo489CeBTOakm0TE3DzweLwbVIIvLH1I7O4oJZL-C5vyPuJn2rD71I7dotBT_qQ0eo_1zQra8cdAidIA3f72MN_Oa7l95wcUqaKtcuIzrI9Ms_utXPi8SgH8rUDMgQ
+
+{
+"name": "99",
+"authorId": "ko co"
+}
 
 # DELETE http://localhost:3003/api/folder/delete/64872e5f5bcb6361e4d0262d
 # Content-Type: application/json
@@ -24,15 +28,14 @@
 # }
 
 
-PATCH   http://localhost:8008/api/note/update
-Content-Type: application/json
+# POST http://localhost:8008/api/folder/create
+# Content-Type: 'application/json'
 
-{
-  "noteID": "648c41898e92ea40747efde7",
-  "content":"<p>sdasdasdasdasdasd</p>
-<p>sadasdasd</p>
-<p>ádasdasd</p>
-<p>sdfsdfsdfsdfsdf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>"
-}
+# {
+#   "name": "HEHEHE",
+#   "authorId": "j9ZjLGxZHHaF22mWiAn5OeC5p5n2",
+# }
+
+
 
 

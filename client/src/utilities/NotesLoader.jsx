@@ -4,10 +4,14 @@ export async function NotesLoader({ params }) {
   // sửa lại lệnh fetch
   const option = {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
   };
 
   try {
-    var data = await fetch(url);
+    var data = await fetch(url, option);
     data = await data.json();
   } catch (error) {
     console.log(error);
@@ -23,7 +27,7 @@ export const addNewNote = async ({ params, request }) => {
 
   if (request.method === "POST") {
     const url = "http://localhost:8008/api/note/create";
-    let a = await fetch(url, {
+    const option = {
       method: "POST",
       body: JSON.stringify({
         content: formDataObj.content,
@@ -31,17 +35,24 @@ export const addNewNote = async ({ params, request }) => {
       }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    });
+    };
+
+    let a = await fetch(url, option);
     return null;
   } else if (request.method === "DELETE") {
     console.log("DELETE");
     const url = `http://localhost:8008/api/note/${formDataObj.noteId}`;
-    let a = await fetch(url, {
+    const option = {
       method: "DELETE",
-    });
-    // a = await a.json();
-    // console.log(a);
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+
+    let a = await fetch(url, option);
     return null;
   }
 

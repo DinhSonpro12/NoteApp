@@ -4,7 +4,7 @@ const Controllers = {
   FolderControllers: {
     async index(req, res) {
       try {
-        const data = await FolderModel.find();
+        const data = await FolderModel.find({ authorId: res.locals.uid });
         res.json(data);
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -13,7 +13,9 @@ const Controllers = {
 
     async slug(req, res) {
       try {
-        const data = await NoteModel.find({ folderId: req.params.slug });
+        const data = await NoteModel.find({
+          folderId: req.params.slug,
+        });
         res.json(data);
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -25,7 +27,7 @@ const Controllers = {
         console.log("req.body", req.body);
         const newFolder = new FolderModel({
           name: req.body.name,
-          authorId: req.body.authorId,
+          authorId: res.locals.uid,
         });
 
         newFolder.save();

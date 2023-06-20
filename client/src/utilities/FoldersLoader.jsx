@@ -1,17 +1,17 @@
 export async function FoldersLoader() {
   const url = "http://localhost:8008/api/folder";
-
-  // cần query theo user id nữa
-
-  // console.log("fetch GET ");
-
   const option = {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
   };
 
   try {
-    var data = await fetch(url);
+    var data = await fetch(url, option);
     data = await data.json();
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -26,29 +26,36 @@ export const addNewFolder = async ({ params, request }) => {
 
   if (request.method === "POST") {
     const url = "http://localhost:8008/api/folder/create";
-    let a = await fetch(url, {
+    const option = {
       method: "POST",
       body: JSON.stringify({
         name: formDataObj.name,
-        authorId: formDataObj.authorId,
       }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    });
+    };
+
+    let a = await fetch(url, option);
     return null;
   } else if (request.method === "DELETE") {
     console.log("DELETE");
     const url = `http://localhost:8008/api/folder/${formDataObj.folderId}`;
-    let a = await fetch(url, {
+    const option = {
       method: "DELETE",
-    }).then((res) => {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+    let a = await fetch(url, option).then((res) => {
       console.log(res);
     });
     return null;
   } else if (request.method === "PATCH") {
     const url = "http://localhost:8008/api/folder/rename";
-    let a = await fetch(url, {
+    const option = {
       method: "PATCH",
       body: JSON.stringify({
         folderId: formDataObj.folderId,
@@ -56,8 +63,10 @@ export const addNewFolder = async ({ params, request }) => {
       }),
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    });
+    };
+    let a = await fetch(url, option);
     return null;
   }
 

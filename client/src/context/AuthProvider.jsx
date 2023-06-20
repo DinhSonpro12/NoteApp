@@ -7,7 +7,7 @@ export const Authcontext = createContext();
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState({});
   var nav = useNavigate();
-  const [must, setMust] = useState(false);
+  const [must, setMust] = useState(null);
   const [activeFolder, setActiveFolder] = useState(0);
 
   const auth = getAuth();

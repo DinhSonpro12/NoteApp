@@ -7,41 +7,44 @@ import { Alert } from "@mui/material";
 export default function Login() {
   const auth = getAuth();
   const { user, must, setMust } = useContext(Authcontext);
+  console.log("must", must);
 
   function handleLogin() {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {});
-    setMust(false);
+    signInWithPopup(auth, provider).then((result) => {
+      setMust(false);
+    });
   }
+
+  var sub = () => {
+    if (must == 1) {
+      return (
+        <Alert severity="warning">
+          This is a warning alert — <strong>You must login first !</strong>
+        </Alert>
+      );
+    } else if (!must) {
+      return (
+        <Alert severity="info">
+          This is a info alert — <strong>Login in here !</strong>
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert severity="error">
+          Your session has expired — <strong>Please log in again !</strong>
+        </Alert>
+      );
+    }
+  };
 
   if (localStorage.getItem("accessToken")) {
     return <Navigate to="/" />;
-
-    //  ko cần thiết vì auth_provider đã làm hết rồi
-    // auth
-    //   .verifyIdToken(localStorage.getItem("accessToken"))
-    //   .then(() => {
-    //     return <Navigate to="/" />;
-    //   })
-    //   .catch((error) => {
-    //     // Handle error
-    //     return <Navigate to="/" />;
-    //   });
   }
 
   return (
     <div className="flex flex-col w-full  justify-center items-center ">
-      <div className="mt-10 m-5">
-        {must ? (
-          <Alert severity="warning">
-            This is a warning alert — <strong>You must login first !</strong>
-          </Alert>
-        ) : (
-          <Alert severity="info">
-            This is a warning alert — <strong>Login in here !</strong>
-          </Alert>
-        )}
-      </div>
+      <div className="mt-10 m-5">{sub()}</div>
 
       <button
         className=" block rounded-2xl w-[100px] h-[50px] border-2  bg-[#0046d5] text-white font-bold mt-3   "
