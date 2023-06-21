@@ -11,6 +11,7 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Authcontext } from "../context/AuthProvider";
 import moment from "moment";
+import { useRef } from "react";
 
 export default function NoteList() {
   const nav = useNavigate();
@@ -22,6 +23,8 @@ export default function NoteList() {
 
   const [avtiveId, setActiveId] = useState();
   const { activeFolder, setActiveFolder } = useContext(Authcontext);
+
+  const nameRef = useRef("");
 
   // console.log("ne:", NoteLists[0].content.substring(0, 30));
 
@@ -106,16 +109,31 @@ export default function NoteList() {
                   setActiveId(NoteList._id);
                 }}
               >
-                {NoteList.content == "<p></p>" ? (
+                {console.log({
+                  x:
+                    NoteList.content
+                      .substring(3, 30)
+                      .replace("</p>", "")
+                      .replace("\n", "") || "son",
+                })}
+                {
+                  // NoteList.content.replace(/ /g, "") == "<p></p> " ||
+                  // NoteList.content == "" ? (
+                  //   "No content"
+                  // ) : (
+
                   <div
                     className="truncate w-full text-center"
                     dangerouslySetInnerHTML={{
-                      __html: `${NoteList.content.substring(0, 30)}`,
+                      __html: `${
+                        NoteList.content
+                          .substring(3, 30)
+                          .replace("</p>", "")
+                          .replace("\n", "") || "No content"
+                      }`,
                     }}
                   ></div>
-                ) : (
-                  "No content"
-                )}
+                }
                 <p className="text-[11px] font-light text-[#000] op ">
                   {moment(NoteList.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                 </p>
@@ -127,7 +145,6 @@ export default function NoteList() {
                     e.stopPropagation();
                     handleRemove(NoteList._id);
                     // setActiveId(null);
-                    console.log("333");
                   }}
                 >
                   <DeleteIcon />
