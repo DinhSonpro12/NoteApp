@@ -89,7 +89,7 @@ export default function Folder({ Folders }) {
             setActiveAdd(false);
           }}
           setActiveId={() => {
-            // setActiveFolder(activeId);
+            setActiveFolder(activeId);
             setActiveId(0);
           }}
         />

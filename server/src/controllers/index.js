@@ -4,7 +4,9 @@ const Controllers = {
   FolderControllers: {
     async index(req, res) {
       try {
-        const data = await FolderModel.find({ authorId: res.locals.uid });
+        const data = await FolderModel.find({ authorId: res.locals.uid }).sort({
+          createdAt: -1,
+        });
         res.json(data);
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -15,6 +17,8 @@ const Controllers = {
       try {
         const data = await NoteModel.find({
           folderId: req.params.slug,
+        }).sort({
+          createdAt: -1,
         });
         res.json(data);
       } catch (error) {

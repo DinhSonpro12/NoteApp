@@ -23,7 +23,7 @@ export default function NoteList() {
   const [avtiveId, setActiveId] = useState();
   const { activeFolder, setActiveFolder } = useContext(Authcontext);
 
-  console.log("ne:", NoteLists[0].content.substring(0, 30));
+  // console.log("ne:", NoteLists[0].content.substring(0, 30));
 
   useEffect(() => {
     if (NoteLists[0]) {
