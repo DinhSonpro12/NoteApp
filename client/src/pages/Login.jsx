@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import { Authcontext } from "../context/AuthProvider";
 import { Alert } from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
 
 export default function Login() {
   const auth = getAuth();
@@ -43,14 +44,15 @@ export default function Login() {
   }
 
   return (
-    <div className="flex flex-col w-full  justify-center items-center ">
-      <div className="mt-10 m-5">{sub()}</div>
+    <div className="flex flex-col w-full h-screen justify-start items-center bg-[#001e3c]">
+      <div className="mt-[7rem] ">{sub()}</div>
 
       <button
-        className=" block rounded-2xl w-[100px] h-[50px] border-2  bg-[#0046d5] text-white font-bold mt-3   "
+        className="group block rounded-2xl w-[100px] h-[50px] border-2  bg-[#0046d5] text-[#d1c630]  hover:bg-[#1f61e6] font-bold mt-3   "
         onClick={handleLogin}
       >
-        login
+        <LoginIcon className="text-[#d1c630] mr-1 group-hover:rotate-[0deg] rotate-[-30deg]" />
+        Login
       </button>
     </div>
   );
