@@ -38,7 +38,7 @@ export default function Add({ closeF, setActiveId }) {
           }`}
           type="text"
           autoFocus
-          placeholder="cc Vui lòng nhập text nha"
+          placeholder="Enter the folder name"
           value={input}
           onChange={(e) => {
             setInput(e.target.value);

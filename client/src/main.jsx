@@ -7,7 +7,7 @@ import "../src/index.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={createBrowserRouter}>
-    <React.StrictMode></React.StrictMode>
-  </RouterProvider>
+  <React.StrictMode>
+    <RouterProvider router={createBrowserRouter} />
+  </React.StrictMode>
 );

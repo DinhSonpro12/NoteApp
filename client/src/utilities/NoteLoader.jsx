@@ -1,5 +1,7 @@
+import { NODE_SERVER } from "./contains";
+
 export async function NoteLoader({ params }) {
-  const url = `http://localhost:8008/api/note/${params.NoteListID}`;
+  const url = `${NODE_SERVER}/api/note/${params.NoteListID}`;
 
   const option = {
     method: "GET",
@@ -28,7 +30,7 @@ export const HandleNote = async ({ params, request }) => {
   newNote.forEach((value, key) => (formDataObj[key] = value));
 
   if (request.method === "PATCH") {
-    const url = "http://localhost:8008/api/note/update";
+    const url = `${NODE_SERVER}/api/note/update`;
     const option = {
       method: "PATCH",
       body: JSON.stringify({

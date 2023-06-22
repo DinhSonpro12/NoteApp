@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+const URI =
+  "mongodb+srv://dinhson:3NqyHLIGTowXaJs9@dinhson.gqguov9.mongodb.net/NoteApp?retryWrites=true&w=majority";
 
 export default async function connectdb() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/son", {
+    await mongoose.connect(URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

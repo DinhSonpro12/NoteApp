@@ -1,5 +1,7 @@
+import { NODE_SERVER } from "./contains";
+
 export async function FoldersLoader() {
-  const url = "http://localhost:8008/api/folder";
+  const url = `${NODE_SERVER}/api/folder`;
   const option = {
     method: "GET",
     headers: {
@@ -25,7 +27,7 @@ export const addNewFolder = async ({ params, request }) => {
   newFolder.forEach((value, key) => (formDataObj[key] = value));
 
   if (request.method === "POST") {
-    const url = "http://localhost:8008/api/folder/create";
+    const url = `${NODE_SERVER}/api/folder/create`;
     const option = {
       method: "POST",
       body: JSON.stringify({
@@ -41,7 +43,7 @@ export const addNewFolder = async ({ params, request }) => {
     return null;
   } else if (request.method === "DELETE") {
     console.log("DELETE");
-    const url = `http://localhost:8008/api/folder/${formDataObj.folderId}`;
+    const url = `${NODE_SERVER}/api/folder/${formDataObj.folderId}`;
     const option = {
       method: "DELETE",
       headers: {
@@ -54,7 +56,7 @@ export const addNewFolder = async ({ params, request }) => {
     });
     return null;
   } else if (request.method === "PATCH") {
-    const url = "http://localhost:8008/api/folder/rename";
+    const url = `${NODE_SERVER}/api/folder/rename`;
     const option = {
       method: "PATCH",
       body: JSON.stringify({

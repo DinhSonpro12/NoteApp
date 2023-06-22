@@ -73,9 +73,12 @@ export default function Folder({ Folders }) {
   }
 
   return (
-    <div className="h-[520px] box-border flex justify-start items-center flex-col bg-[#918d8d] rounded-lg m-2 pt-2">
-      <h1>Folder</h1>
+    <div className="relative h-[520px] box-border flex justify-start items-center flex-col bg-[#001e3c] rounded-lg m-2 pt-2">
+      <h1 className="text-[#cac46d] font-semibold my-5 select-none">Folder</h1>
+      <div className="border-b-2 w-[80%]"></div>
+
       <button
+        className="absolute top-3 right-2 text-[#d1c630]  hover:text-[#ffee09] hover:scale-110 rounded-lg border-[#4b77a7] border-[1px] border-solid p-[2px] transition 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
         onClick={() => {
           setActiveAdd(true);
         }}
@@ -101,7 +104,7 @@ export default function Folder({ Folders }) {
           return (
             <div
               key={id}
-              className={`rounded-xl w-[182px] h-[70px] m-4 p-5 mt-0  hover:cursor-pointer flex items-center justify-center relative ${
+              className={`group rounded-xl w-[182px] h-[70px] m-4 p-5 mt-0  hover:cursor-pointer flex items-center justify-center relative ${
                 folder._id == activeId ? `bg-orange-200` : `bg-white`
               } `}
               onClick={() => {
@@ -111,7 +114,7 @@ export default function Folder({ Folders }) {
                 setactiveRename(true);
               }}
             >
-              <p className="select-none truncate">
+              <p className="select-none truncate font-semibold">
                 {folder.name}
 
                 {/* input Rename */}
@@ -138,14 +141,14 @@ export default function Folder({ Folders }) {
                         setactiveRename(false);
                       }
                     }}
-                    className="absolute top-1/2 left-1/2 w-[150px]  transform -translate-x-1/2 -translate-y-1/2 "
+                    className="absolute top-1/2 left-1/2 w-[130px] transform -translate-x-1/2 -translate-y-1/2 pl-1"
                   />
                 ) : null}
               </p>
 
               {/* delete icon */}
               <div
-                className="absolute top-0 left-0 w-5 h-5"
+                className="absolute top-0 left-0 w-5 h-5 opacity-0 text-[#d13838] hover:scale-110 group-hover:opacity-100 transition duration-300 ease-in-out "
                 onClick={(e) => {
                   e.stopPropagation();
                   handleRemove(folder._id);

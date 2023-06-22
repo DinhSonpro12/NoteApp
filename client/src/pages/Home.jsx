@@ -21,10 +21,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col w-full bg-[#202124] h-screen ">
+    <div className="flex flex-col w-full bg-[#0a1929] h-screen ">
       {/* Header */}
       <div className=" relative box-border h-[80px] flex items-center flex-col p-3 m-b-3 mt-3 border-b-2">
-        <h1 className="text-2xl text-white"> Home</h1>
+        <h1 className="text-2xl font-bold text-[#cac46d] select-none">
+          NoteApp
+        </h1>
 
         {/* user */}
         <BoxUser user={user} />

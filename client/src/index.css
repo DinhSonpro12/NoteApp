@@ -40,3 +40,74 @@
   /* we got the background now lets make it round */
   border-radius: 100px;
 }
+
+.animate-appear {
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0.1;
+  }
+  25% {
+    opacity: 0.25;
+    transform: translateY(-3%);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-2%);
+  }
+  75% {
+    opacity: 0.75;
+    transform: translateY(-1%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.animate-disappear {
+  animation-name: disappear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes disappear {
+  100% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.25;
+    transform: translateY(-3%);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-2%);
+  }
+  25% {
+    opacity: 0.75;
+    transform: translateY(-1%);
+  }
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.animate-rotate {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

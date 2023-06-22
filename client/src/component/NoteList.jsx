@@ -26,29 +26,22 @@ export default function NoteList() {
 
   const nameRef = useRef("");
 
-  // console.log("ne:", NoteLists[0].content.substring(0, 30));
-
   useEffect(() => {
+    let isHaveNote = NoteLists.find((x) => {
+      return x._id == NoteID;
+    });
+
     if (NoteLists[0]) {
       if (NoteID) {
-        if (
-          NoteLists.find((x) => {
-            return x._id == NoteID;
-          })
-        ) {
-          if (NoteLists[0]) {
-            setActiveId(NoteID);
-          }
-        } else nav("/error url notelist");
+        if (isHaveNote) setActiveId(NoteID);
+        else nav("/error url notelist");
       } else if (NoteLists[0]._id == avtiveId) {
         nav(`notelist/${avtiveId}`);
       } else {
         setActiveId(NoteLists[0]._id);
       }
     } else {
-      console.log("active", avtiveId);
       setActiveId(0);
-      // nav(`/Folder/${FolderID}`);
     }
   }, [NoteLists]);
 
@@ -81,12 +74,16 @@ export default function NoteList() {
   }
 
   return (
-    <div className="flex h-[536px] overflow-x-hidden">
-      <div className=" flex h-[520px] justify-start items-center flex-col bg-[#ccc] rounded-lg my-2 pt-2 ">
-        <h1>NoteList</h1>
+    <div className="flex h-[536px] pt-1 overflow-x-hidden">
+      <div className=" flex relative h-[510px]  justify-start items-center flex-col bg-[#0c2d4e]  rounded-lg my-2 pt-2 ">
+        <h1 className="text-[#cac46d] font-semibold my-5 select-none">
+          NoteList
+        </h1>
+        <div className="border-b-2 w-[80%]"></div>
 
         {/* add new note */}
         <button
+          className="absolute top-3 right-2 text-[#d1c630]  hover:text-[#ffee09] hover:scale-110  rounded-lg border-[#4b77a7] border-[1px] border-solid p-[2px] transition 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
           onClick={() => {
             handleAddNewNote();
             // setActiveId(null);
@@ -102,7 +99,7 @@ export default function NoteList() {
               <div
                 key={id}
                 // to={`notelist/${NoteList._id}`}
-                className={`rounded-xl  w-[190px] h-[82px] m-4 p-5 mt-0 hover:cursor-pointer flex flex-col items-center justify-center relative  ${
+                className={`group rounded-xl  w-[190px] h-[63px] m-4  mt-0 hover:cursor-pointer flex flex-col items-center justify-center relative  ${
                   NoteList._id === avtiveId ? `bg-orange-200` : `bg-white`
                 }`}
                 onClick={() => {
@@ -123,7 +120,7 @@ export default function NoteList() {
                   // ) : (
 
                   <div
-                    className="truncate w-full text-center"
+                    className="truncate w-full text-center select-none font-semibold"
                     dangerouslySetInnerHTML={{
                       __html: `${
                         NoteList.content
@@ -134,13 +131,13 @@ export default function NoteList() {
                     }}
                   ></div>
                 }
-                <p className="text-[11px] font-light text-[#000] op ">
+                <p className="text-[11px] font-light text-[#000] select-none ">
                   {moment(NoteList.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                 </p>
 
                 {/* delete icon */}
                 <div
-                  className="absolute top-0 left-0 w-5 h-5"
+                  className="absolute top-0 left-0 w-5 h-5 opacity-0 hover:scale-110 group-hover:opacity-100 text-[#d13838] transition duration-300 ease-in-out "
                   onClick={(e) => {
                     e.stopPropagation();
                     handleRemove(NoteList._id);

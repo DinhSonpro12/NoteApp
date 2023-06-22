@@ -1,6 +1,8 @@
+import { NODE_SERVER } from "./contains";
+
 export async function NotesLoader({ params }) {
   const slug = params.FolderId;
-  const url = `http://localhost:8008/api/folder/${slug}`;
+  const url = `${NODE_SERVER}/api/folder/${slug}`;
   // sửa lại lệnh fetch
   const option = {
     method: "GET",
@@ -26,7 +28,7 @@ export const addNewNote = async ({ params, request }) => {
   newNote.forEach((value, key) => (formDataObj[key] = value));
 
   if (request.method === "POST") {
-    const url = "http://localhost:8008/api/note/create";
+    const url = `${NODE_SERVER}/api/note/create`;
     const option = {
       method: "POST",
       body: JSON.stringify({
@@ -43,7 +45,7 @@ export const addNewNote = async ({ params, request }) => {
     return null;
   } else if (request.method === "DELETE") {
     console.log("DELETE");
-    const url = `http://localhost:8008/api/note/${formDataObj.noteId}`;
+    const url = `${NODE_SERVER}/api/note/${formDataObj.noteId}`;
     const option = {
       method: "DELETE",
       headers: {
