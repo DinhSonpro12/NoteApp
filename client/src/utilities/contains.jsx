@@ -1,1 +1,1 @@
-export const NODE_SERVER = "http://localhost:8008";
+export const NODE_SERVER = "https://noteapp-ma87.onrender.com";
