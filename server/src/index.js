@@ -3,7 +3,7 @@ import connectdb from "./config/db/index.js";
 import Routes from "./routes/index.js";
 import bodyParser from "body-parser";
 import cors from "cors";
-import "./FirebaseConfig.js";
+import "./config/firebase/FirebaseConfig.js";
 import { getAuth } from "firebase-admin/auth";
 
 const app = express();
