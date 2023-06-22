@@ -6,7 +6,7 @@ import Protected from "./Protected";
 import ErrorPage from "../pages/ErrorPage";
 import NoteList from "../component/NoteList";
 import Note from "../component/Note";
-import { FoldersLoader, addNewFolder } from "../utilities/foldersLoader";
+import { FoldersLoader, addNewFolder } from "../utilities/FoldersLoader";
 import { NotesLoader, addNewNote } from "../utilities/NotesLoader";
 import { NoteLoader, HandleNote } from "../utilities/NoteLoader";
 
