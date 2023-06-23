@@ -66,19 +66,21 @@ NoteApp/                  <Project>
 
 
 # **Technologies**
-* **Client**:` ReactJS, JavaScript, HTML, TailwindCSS, RESTful API.`
-* **Server**:` NodeJS, Express, MongoDB, Firebase Authentication & Authorization`
+* **Client**: ` ReactJS, JavaScript, HTML, TailwindCSS, RESTful API.`
+* **Server**: ` NodeJS, Express, MongoDB, Firebase Authentication & Authorization`
 
 
 
 # **Install & Config** 
 ## ***Install***
 - Install the *dependencies* for the ***Client Side*** (**ReactJS**): ` express nodemon cors body-parser mongoose firebase-admin.`
+  
     ```
     cd client
     npm install  
     ```
 - Install the *dependencies* for the ***Server Side*** (**NodeJS Express**): `material tailwindcss react-router-dom firebase draft-js.`
+  
     ```
     cd server
     npm install
@@ -93,6 +95,7 @@ NoteApp/                  <Project>
 - Server:
   - coppy modular JavaScript SDK of Firebase, then paste this to `\server\src\config\firebase\FirebaseConfig.js`
   - Replace `from "firebase/app"`:
+    
     ``` 
     import { initializeApp } from "firebase-admin/app"; 
     ```
@@ -100,11 +103,13 @@ NoteApp/                  <Project>
 ### **Config Database**:
 - Create account MongoDB online and create Note Database.
 - Coppy the url of Database and paste it to  `\server\src\config\db\index.js`:
+  
     ```
     const URI = "URL_DATABASE" 
     ```
 ### **Config Domain Server**:
 - `\client\src\utilities\contains.jsx`
+  
     ```
     export const NODE_SERVER = "domain_Server";
     ```
@@ -127,19 +132,18 @@ NoteApp/                  <Project>
   
 ## ***Handle Error:***
 - ***Incorrect URL***
-<video controls>
-  <source src="./DataReadme/video/ErrorPage.mp4" type="video/mp4">
-</video>
+  
+https://github.com/DinhSonpro12/NoteApp/assets/80202822/a395bf7d-8385-46f3-8094-dd81a96a42bc
+
 
 - ***Prevent invalid access before login***
-<video controls>
-  <source src="./DataReadme/video/MustLoginFist.mp4" type="video/mp4">
-</video>
   
+https://github.com/DinhSonpro12/NoteApp/assets/80202822/2b67ee50-dcdb-4fa4-9da5-5ff4b7096127
+
+
 # **Illustrations**
-<video controls>
-  <source src="./DataReadme/video/NoteAppVideo.mp4" type="video/mp4">
-</video>
+
+https://github.com/DinhSonpro12/NoteApp/assets/80202822/731cd553-e801-418b-9309-e01091b55646
 
 
 # **Deployment**
