@@ -2,6 +2,12 @@
 # **NoteApp**
 **NoteApp** is a simple note-taking application built using ***ReactJS*** and ***NodeJS Express***. This application allows users to create, edit and delete personal notes. 
 
+<p align="center"><img src="./DataReadme/img/NoteApppng.png" title="NoteApp"/></p>
+
+<p align="center"><u>Image: NoteApp</u></p>
+<!-- ![Text chú adasdadasdthích](./DataReadme/img/NoteApppng.png)
+Đây là logo của GitHub. -->
+
 # **Table of contents**
 
 - [**NoteApp**](#noteapp)
@@ -9,14 +15,15 @@
 - [**Introductions**](#introductions)
 - [**Project structure**](#project-structure)
 - [**Technologies**](#technologies)
-- [**Install \& Usage**](#install--usage)
+- [**Install \& Config**](#install--config)
   - [***Install***](#install)
   - [***Config***](#config)
-    - [**Config TailwindCss**:](#config-tailwindcss)
     - [**Config Firebase**:](#config-firebase)
     - [**Config Database**:](#config-database)
-  - [***Run***](#run)
+    - [**Config Domain Server**:](#config-domain-server)
 - [**Feature**](#feature)
+  - [***Main:***](#main)
+  - [***Handle Error:***](#handle-error)
 - [**Illustrations**](#illustrations)
 - [**Deployment**](#deployment)
 - [**Author**](#author)
@@ -64,52 +71,77 @@ NoteApp/                  <Project>
 
 
 
-# **Install & Usage** 
+# **Install & Config** 
 ## ***Install***
-cd NoteApp
-Cài đặt các dependencies cho phía client (ReactJS):
-bash
-Copy code
-cd client
-npm install
-Cài đặt các dependencies cho phía server (Node.js Express):
-bash
-Copy code
-cd ../server
-npm install
-
+- Install the *dependencies* for the ***Client Side*** (**ReactJS**): ` express nodemon cors body-parser mongoose firebase-admin.`
+    ```
+    cd client
+    npm install  
+    ```
+- Install the *dependencies* for the ***Server Side*** (**NodeJS Express**): `material tailwindcss react-router-dom firebase draft-js.`
+    ```
+    cd server
+    npm install
+    ```
 ## ***Config***
-### **Config TailwindCss**:
 ### **Config Firebase**:
 - Client:
+  - Create Firebase prooject and coppy 
+  modular JavaScript SDK of Firebase.
+  - Paste this to `\client\src\firebase\config.jsx`.
+  
 - Server:
+  - coppy modular JavaScript SDK of Firebase, then paste this to `\server\src\config\firebase\FirebaseConfig.js`
+  - Replace `from "firebase/app"`:
+    ``` 
+    import { initializeApp } from "firebase-admin/app"; 
+    ```
+
 ### **Config Database**:
-
-Tạo một tài khoản Firebase và kích hoạt Firebase Authentication.
-Lấy thông tin cấu hình của Firebase (API key, project ID, etc.).
-
-Cấu hình kết nối với cơ sở dữ liệu MongoDB trong tệp 
-
-
-## ***Run***
-Chạy phía client (ReactJS):
-bash
-Copy code
-cd client
-npm start
-Chạy phía server (Node.js Express):
-bash
-Copy code
-cd ../server
-npm start
-Sau khi cài đặt và chạy ứng dụng thành công, bạn có thể truy cập NoteApp thông qua trình duyệt với đường dẫn:
-
-arduino
-Copy code
-http://localhost:3000
-Ứng dụng sẽ hiển thị giao diện người dùng để tạo và quản lý các ghi chú cá nhân. Bạn sẽ cần đăng nhập bằng tài khoản Firebase để sử dụng các tính năng của ứng dụng.
+- Create account MongoDB online and create Note Database.
+- Coppy the url of Database and paste it to  `\server\src\config\db\index.js`:
+    ```
+    const URI = "URL_DATABASE" 
+    ```
+### **Config Domain Server**:
+- `\client\src\utilities\contains.jsx`
+    ```
+    export const NODE_SERVER = "domain_Server";
+    ```
+    
 # **Feature**
+## ***Main:***
+- ***Folder***: 
+  - **Create**
+  - **Rename**
+  - **Delete**
+  - **Sort Folders in ascending order of create time.**
+- ***Note***: 
+  - **Create**
+  - **Delete**
+  - **Setname the note with the first line of the note**
+  - **Sort notes in ascending order of edit time.**
+- ***Login*** : with **google authentication**
+- ***Authorization***: with **firebase authorization**
+- ***Save status based on URL and manage navigation***: with **React-Router-DOM**.
+  
+## ***Handle Error:***
+- ***Incorrect URL***
+<video controls>
+  <source src="./DataReadme/video/ErrorPage.mp4" type="video/mp4">
+</video>
+
+- ***Prevent invalid access before login***
+<video controls>
+  <source src="./DataReadme/video/MustLoginFist.mp4" type="video/mp4">
+</video>
+  
 # **Illustrations**
+<video controls>
+  <source src="./DataReadme/video/NoteAppVideo.mp4" type="video/mp4">
+</video>
+
+
 # **Deployment**
 **Deploy a Client (ReactJS) using [Netlify](https://www.netlify.com/)**:
 - To implement the client (ReactJS), i use [Netlify](https://www.netlify.com/) which is a popular platform for hosting static websites and offers seamless integration with GitHub.
