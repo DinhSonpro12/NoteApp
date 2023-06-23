@@ -106,19 +106,29 @@ export default function NoteList() {
                   setActiveId(NoteList._id);
                 }}
               >
-                {console.log({
-                  x: NoteList.content.split("</p>")[0],
-                })}
+                {console.log(
+                  {
+                    x: NoteList.content.split("</p>")[0] == "<p>",
+                  },
+                  NoteList.content.split("</p>")[0]
+                )}
                 {
                   <div
                     className="truncate w-full text-center select-none font-semibold"
-                    dangerouslySetInnerHTML={{
-                      __html: `${
-                        NoteList.content.split("</p>")[0].substring(0, 30) ||
-                        "Empty"
-                      }`,
-                    }}
-                  ></div>
+                    // dangerouslySetInnerHTML={{
+                    //   __html: `${
+                    //     NoteList.content.split("</p>")[0].substring(0, 30) ||
+                    //     "Empty"
+                    //   }`,
+                    // }}
+                  >
+                    {NoteList.content.split("</p>")[0].replace("<p>", "") == ""
+                      ? "Empty"
+                      : NoteList.content
+                          .split("</p>")[0]
+                          .substring(0, 30)
+                          .replace("<p>", "")}
+                  </div>
                 }
 
                 <p className="text-[11px] font-light text-[#000] select-none ">
