@@ -107,30 +107,20 @@ export default function NoteList() {
                 }}
               >
                 {console.log({
-                  x:
-                    NoteList.content
-                      .substring(3, 30)
-                      .replace("</p>", "")
-                      .replace("\n", "") || "son",
+                  x: NoteList.content.split("</p>")[0],
                 })}
                 {
-                  // NoteList.content.replace(/ /g, "") == "<p></p> " ||
-                  // NoteList.content == "" ? (
-                  //   "No content"
-                  // ) : (
-
                   <div
                     className="truncate w-full text-center select-none font-semibold"
                     dangerouslySetInnerHTML={{
                       __html: `${
-                        NoteList.content
-                          .substring(3, 30)
-                          .replace("</p>", "")
-                          .replace("\n", "") || "No content"
+                        NoteList.content.split("</p>")[0].substring(0, 30) ||
+                        "Empty"
                       }`,
                     }}
                   ></div>
                 }
+
                 <p className="text-[11px] font-light text-[#000] select-none ">
                   {moment(NoteList.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                 </p>

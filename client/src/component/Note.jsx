@@ -42,21 +42,21 @@ export default function Note() {
 
   useEffect(() => {
     // Solution 1
-    // const blocksFromHTML = convertFromHTML(note.content);
-    // const state = ContentState.createFromBlockArray(
-    //   blocksFromHTML.contentBlocks,
-    //   blocksFromHTML.entityMap
-    // );
-    // const x = EditorState.moveFocusToEnd(EditorState.createWithContent(state));
-    // setEditorState(x);
+    const blocksFromHTML = convertFromHTML(note.content);
+    const state = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
+    const x = EditorState.moveFocusToEnd(EditorState.createWithContent(state));
+    setEditorState(x);
     // End Solution 1
 
     // Solution 2
-    const contentState = stateFromHTML(note.content);
-    const editorState = EditorState.moveFocusToEnd(
-      EditorState.createWithContent(contentState)
-    );
-    setEditorState(editorState);
+    // const contentState = stateFromHTML(note.content);
+    // const editorState = EditorState.moveFocusToEnd(
+    //   EditorState.createWithContent(contentState)
+    // );
+    // setEditorState(editorState);
     //End Solution 2
   }, [NoteID]);
 
@@ -85,6 +85,7 @@ export default function Note() {
     const isSetRawHTML =
       editorState.getCurrentContent() !== newEditorState.getCurrentContent();
     setEditorState(newEditorState);
+
     if (isSetRawHTML) {
       setRawHTML(draftToHtml(convertToRaw(newEditorState.getCurrentContent())));
     }
