@@ -9,7 +9,7 @@ import {
 
 import { Modifier } from "draft-js";
 
-import * as draftToHtml from "draftjs-to-html";
+import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
 import {
   useLoaderData,
