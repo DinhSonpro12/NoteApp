@@ -82,11 +82,13 @@ export default function Note() {
   }, []);
 
   const handleOnChange = (newEditorState) => {
-    const isSetRawHTML =
-      editorState.getCurrentContent() !== newEditorState.getCurrentContent();
     setEditorState(newEditorState);
+    // const isSetRawHTML =
+    //   editorState.getCurrentContent() !== newEditorState.getCurrentContent();
 
-    if (isSetRawHTML) {
+    if (
+      editorState.getCurrentContent() !== newEditorState.getCurrentContent()
+    ) {
       setRawHTML(draftToHtml(convertToRaw(newEditorState.getCurrentContent())));
     }
   };
