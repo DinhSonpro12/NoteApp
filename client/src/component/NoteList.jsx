@@ -115,21 +115,19 @@ export default function NoteList() {
                 {
                   <div
                     className="truncate w-full text-center select-none font-semibold"
-                    // dangerouslySetInnerHTML={{
-                    //   __html: `${
-                    //     NoteList.content.split("</p>")[0].substring(0, 30) ||
-                    //     "Empty"
-                    //   }`,
-                    // }}
-                  >
-                    {NoteList.content.split("</p>")[0].replace("<p>", "") == ""
-                      ? "Empty"
-                      : NoteList.content
-                          .split("</p>")[0]
-                          .substring(0, 30)
-                          .replace("<p>", "")}
-                  </div>
+                    dangerouslySetInnerHTML={{
+                      __html: `${
+                        NoteList.content.split("</p>")[0].substring(0, 30) || ""
+                      }`,
+                    }}
+                  ></div>
                 }
+
+                <div className="truncate w-full text-center select-none font-semibold">
+                  {NoteList.content.split("</p>")[0].replace("<p>", "") == ""
+                    ? "Empty"
+                    : null}
+                </div>
 
                 <p className="text-[11px] font-light text-[#000] select-none ">
                   {moment(NoteList.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
