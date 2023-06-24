@@ -151,13 +151,13 @@ https://github.com/DinhSonpro12/NoteApp/assets/80202822/731cd553-e801-418b-9309-
 **Deploy a Server (Node.js Express) using [Render](https://render.com/):**
 - For server deployment (Node.js Express), [Render](https://render.com/) is a suitable choice which is a cloud hosting platform that provides simplicity and scalability for my server-side applications.
 
-> ***My project's deployment***: [**NoteApp**](https://main--comforting-moonbeam-02140b.netlify.app/)
+> ***My project's deployment***: [**NoteApp**](https://main--comforting-moonbeam-02140b.netlify.app/)  ` You may have to wait a few minutes for the server to start `
 
 # **Author**
 ***Name***: [**Dinh Trong Tung Son**](https://github.com/DinhSonpro12)
 
 ***Email***: dinhtrongtungson2626@gmail.com
 ***
-**`If you have any questions or suggestions, feel free to contact me via email.`**
+## ***If you have any questions or suggestions, feel free to contact me via email.***
 
 
