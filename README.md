@@ -10,8 +10,6 @@
 
 # **Table of contents**
 
-- [**NoteApp**](#noteapp)
-- [**Table of contents**](#table-of-contents)
 - [**Introductions**](#introductions)
 - [**Project structure**](#project-structure)
 - [**Technologies**](#technologies)
