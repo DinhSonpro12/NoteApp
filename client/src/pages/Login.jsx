@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { Authcontext } from "../context/AuthProvider";
 import { Alert } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
+import WavingHandIcon from "@mui/icons-material/WavingHand";
 
 export default function Login() {
   const auth = getAuth();
@@ -45,7 +46,11 @@ export default function Login() {
 
   return (
     <div className="flex flex-col w-full h-screen justify-start items-center bg-[#001e3c]">
-      <div className="mt-[7rem] ">{sub()}</div>
+      <div className="mt-[5rem] ">{sub()}</div>
+      <p className="text-[#d1c630] font-semibold text-[40px] mt-10">
+        Welcome to NoteApp
+        <WavingHandIcon fontSize="large" className="ml-2" />
+      </p>
 
       <button
         className="group block rounded-2xl w-[100px] h-[50px] border-2  bg-[#0046d5] text-[#d1c630]  hover:bg-[#1f61e6] font-bold mt-3   "
